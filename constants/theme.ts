@@ -1,29 +1,50 @@
 /**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
+ * Gen Z Era Color Palette - Vibrant and Modern
  */
 
 import { Platform } from 'react-native';
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+const tintColorLight = '#6366f1'; // Indigo
+const tintColorDark = '#a855f7'; // Purple
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
+    text: '#0f172a',
+    background: '#f8fafc',
     tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
+    icon: '#64748b',
+    tabIconDefault: '#94a3b8',
     tabIconSelected: tintColorLight,
+    // Gen Z Gradient Colors
+    gradient1: '#6366f1', // Indigo
+    gradient2: '#8b5cf6', // Purple
+    gradient3: '#ec4899', // Pink
+    gradient4: '#f59e0b', // Amber
+    // Accent Colors
+    accent: '#ec4899',
+    success: '#10b981',
+    warning: '#f59e0b',
+    cardBg: '#ffffff',
+    cardShadow: 'rgba(99, 102, 241, 0.1)',
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
+    text: '#f1f5f9',
+    background: '#0f172a',
     tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
+    icon: '#94a3b8',
+    tabIconDefault: '#64748b',
     tabIconSelected: tintColorDark,
+    // Gen Z Gradient Colors (darker variants)
+    gradient1: '#6366f1',
+    gradient2: '#8b5cf6',
+    gradient3: '#ec4899',
+    gradient4: '#f59e0b',
+    // Accent Colors
+    accent: '#ec4899',
+    success: '#10b981',
+    warning: '#f59e0b',
+    cardBg: '#1e293b',
+    cardShadow: 'rgba(139, 92, 246, 0.2)',
   },
 };
 

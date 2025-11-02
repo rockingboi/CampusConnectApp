@@ -1,11 +1,14 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { ThemeProvider } from './context/ThemeContext';
 import TabNavigator from './navigation/TabNavigator';
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <TabNavigator />
-    </NavigationContainer>
+    <ThemeProvider>
+      <NavigationContainer>
+        <TabNavigator />
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
