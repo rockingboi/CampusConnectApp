@@ -46,19 +46,17 @@ const getCategoryEmoji = (category) => {
   return categoryEmojis.default;
 };
 
-// Attractive solid colors
 const cardColors = [
-  { primary: '#6366f1', light: '#eef2ff' }, // Indigo
-  { primary: '#8b5cf6', light: '#f5f3ff' }, // Purple
-  { primary: '#ec4899', light: '#fdf2f8' }, // Pink
-  { primary: '#f59e0b', light: '#fffbeb' }, // Amber
-  { primary: '#10b981', light: '#ecfdf5' }, // Green
-  { primary: '#3b82f6', light: '#eff6ff' }, // Blue
-  { primary: '#ef4444', light: '#fef2f2' }, // Red
-  { primary: '#06b6d4', light: '#ecfeff' }, // Cyan
+  { primary: '#6366f1', light: '#eef2ff' },
+  { primary: '#8b5cf6', light: '#f5f3ff' },
+  { primary: '#ec4899', light: '#fdf2f8' },
+  { primary: '#f59e0b', light: '#fffbeb' },
+  { primary: '#10b981', light: '#ecfdf5' },
+  { primary: '#3b82f6', light: '#eff6ff' },
+  { primary: '#ef4444', light: '#fef2f2' },
+  { primary: '#06b6d4', light: '#ecfeff' },
 ];
 
-// Countdown Timer Component
 function CountdownTimer({ eventDate }) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [isExpired, setIsExpired] = useState(false);
@@ -159,22 +157,18 @@ export default function EventDetailsScreen({ route }) {
 
   const checkStates = async () => {
     try {
-      // Check registration
       const stored = await AsyncStorage.getItem('registeredEvents');
       const registeredEvents = stored ? JSON.parse(stored) : [];
       setIsRegistered(registeredEvents.some(e => e.id === event.id));
 
-      // Check favorite
       const favorites = await AsyncStorage.getItem('favoriteEvents');
       const favoriteEvents = favorites ? JSON.parse(favorites) : [];
       setIsFavorite(favoriteEvents.some(e => e.id === event.id));
 
-      // Check reminder
       const reminders = await AsyncStorage.getItem('eventReminders');
       const reminderEvents = reminders ? JSON.parse(reminders) : [];
       setHasReminder(reminderEvents.some(e => e.id === event.id));
 
-      // Check rating
       const ratings = await AsyncStorage.getItem('eventRatings');
       const eventRatings = ratings ? JSON.parse(ratings) : {};
       if (eventRatings[event.id]) {
@@ -270,19 +264,16 @@ export default function EventDetailsScreen({ route }) {
 
     try {
       if (!hasReminder) {
-        // Request notification permissions
         const { status } = await Notifications.requestPermissionsAsync();
         if (status !== 'granted') {
           Alert.alert('Permission Required', 'Please enable notifications to set reminders.');
           return;
         }
 
-        // Schedule notification
         if (event.date) {
           try {
             const eventDate = new Date(event.date);
             if (!isNaN(eventDate.getTime())) {
-              // Schedule 1 day before
               const reminderDate = new Date(eventDate);
               reminderDate.setDate(reminderDate.getDate() - 1);
 
@@ -296,7 +287,6 @@ export default function EventDetailsScreen({ route }) {
                   trigger: reminderDate,
                 });
 
-                // Save reminder
                 const stored = await AsyncStorage.getItem('eventReminders');
                 const reminders = stored ? JSON.parse(stored) : [];
                 await AsyncStorage.setItem('eventReminders', JSON.stringify([...reminders, event]));
@@ -311,7 +301,6 @@ export default function EventDetailsScreen({ route }) {
           }
         }
       } else {
-        // Remove reminder
         const stored = await AsyncStorage.getItem('eventReminders');
         const reminders = stored ? JSON.parse(stored) : [];
         const updated = reminders.filter(e => e.id !== event.id);
@@ -489,7 +478,6 @@ export default function EventDetailsScreen({ route }) {
             <View style={styles.content}>
               <Text style={[styles.name, dynamicStyles.name]}>{event.name}</Text>
 
-              {/* Countdown Timer */}
               <CountdownTimer eventDate={event.date} />
 
               <View style={styles.infoSection}>
@@ -538,7 +526,6 @@ export default function EventDetailsScreen({ route }) {
                 </View>
               )}
 
-              {/* Action Buttons */}
               <View style={styles.actionButtons}>
                 <AnimatedTouchable
                   style={[styles.actionButton, reminderAnimatedStyle, { backgroundColor: hasReminder ? '#f59e0b' : 'rgba(99, 102, 241, 0.1)', borderColor: hasReminder ? '#f59e0b' : colors.primary }]}
@@ -567,7 +554,6 @@ export default function EventDetailsScreen({ route }) {
                 </TouchableOpacity>
               </View>
 
-              {/* Share Options */}
               <View style={styles.shareSection}>
                 <Text style={[styles.shareTitle, dynamicStyles.shareTitle]}>Share Event</Text>
                 <View style={styles.shareButtons}>
@@ -616,7 +602,6 @@ export default function EventDetailsScreen({ route }) {
         </ScrollView>
       </SafeAreaView>
 
-      {/* Rating Modal */}
       <Modal
         visible={showRatingModal}
         transparent={true}

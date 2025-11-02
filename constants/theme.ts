@@ -1,11 +1,7 @@
-/**
- * Gen Z Era Color Palette - Vibrant and Modern
- */
-
 import { Platform } from 'react-native';
 
-const tintColorLight = '#6366f1'; // Indigo
-const tintColorDark = '#a855f7'; // Purple
+const tintColorLight = '#6366f1';
+const tintColorDark = '#a855f7';
 
 export const Colors = {
   light: {
@@ -15,12 +11,10 @@ export const Colors = {
     icon: '#64748b',
     tabIconDefault: '#94a3b8',
     tabIconSelected: tintColorLight,
-    // Gen Z Gradient Colors
-    gradient1: '#6366f1', // Indigo
-    gradient2: '#8b5cf6', // Purple
-    gradient3: '#ec4899', // Pink
-    gradient4: '#f59e0b', // Amber
-    // Accent Colors
+    gradient1: '#6366f1',
+    gradient2: '#8b5cf6',
+    gradient3: '#ec4899',
+    gradient4: '#f59e0b',
     accent: '#ec4899',
     success: '#10b981',
     warning: '#f59e0b',
@@ -34,12 +28,10 @@ export const Colors = {
     icon: '#94a3b8',
     tabIconDefault: '#64748b',
     tabIconSelected: tintColorDark,
-    // Gen Z Gradient Colors (darker variants)
     gradient1: '#6366f1',
     gradient2: '#8b5cf6',
     gradient3: '#ec4899',
     gradient4: '#f59e0b',
-    // Accent Colors
     accent: '#ec4899',
     success: '#10b981',
     warning: '#f59e0b',
@@ -50,13 +42,9 @@ export const Colors = {
 
 export const Fonts = Platform.select({
   ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
     sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
     serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
     rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
     mono: 'ui-monospace',
   },
   default: {

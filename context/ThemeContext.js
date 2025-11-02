@@ -14,7 +14,7 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }) => {
   const systemColorScheme = useColorScheme();
-  const [theme, setTheme] = useState('light'); // 'light' or 'dark'
+  const [theme, setTheme] = useState('light');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -27,7 +27,6 @@ export const ThemeProvider = ({ children }) => {
       if (savedTheme) {
         setTheme(savedTheme);
       } else {
-        // Use system theme as default
         setTheme(systemColorScheme || 'light');
       }
     } catch (error) {

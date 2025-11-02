@@ -1,41 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, View, Text, StyleSheet, Platform } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Haptics from 'expo-haptics';
+import React, { useEffect, useState } from 'react';
+import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
+  withSequence,
   withSpring,
   withTiming,
-  withSequence,
 } from 'react-native-reanimated';
-import { Ionicons } from '@expo/vector-icons';
-import * as Haptics from 'expo-haptics';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTheme } from '../context/ThemeContext';
 
 const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
-// Attractive solid colors instead of gradients
 const cardColors = [
-  { border: '#6366f1', bg: '#eef2ff' }, // Indigo
-  { border: '#8b5cf6', bg: '#f5f3ff' }, // Purple
-  { border: '#ec4899', bg: '#fdf2f8' }, // Pink
-  { border: '#f59e0b', bg: '#fffbeb' }, // Amber
-  { border: '#10b981', bg: '#ecfdf5' }, // Green
-  { border: '#3b82f6', bg: '#eff6ff' }, // Blue
-  { border: '#ef4444', bg: '#fef2f2' }, // Red
-  { border: '#06b6d4', bg: '#ecfeff' }, // Cyan
+  { border: '#6366f1', bg: '#eef2ff' },
+  { border: '#8b5cf6', bg: '#f5f3ff' },
+  { border: '#ec4899', bg: '#fdf2f8' },
+  { border: '#f59e0b', bg: '#fffbeb' },
+  { border: '#10b981', bg: '#ecfdf5' },
+  { border: '#3b82f6', bg: '#eff6ff' },
+  { border: '#ef4444', bg: '#fef2f2' },
+  { border: '#06b6d4', bg: '#ecfeff' },
 ];
 
-// Dark mode card colors
 const darkCardColors = [
-  { border: '#6366f1', bg: '#1e293b' }, // Indigo
-  { border: '#8b5cf6', bg: '#1e293b' }, // Purple
-  { border: '#ec4899', bg: '#1e293b' }, // Pink
-  { border: '#f59e0b', bg: '#1e293b' }, // Amber
-  { border: '#10b981', bg: '#1e293b' }, // Green
-  { border: '#3b82f6', bg: '#1e293b' }, // Blue
-  { border: '#ef4444', bg: '#1e293b' }, // Red
-  { border: '#06b6d4', bg: '#1e293b' }, // Cyan
+  { border: '#6366f1', bg: '#1e293b' },
+  { border: '#8b5cf6', bg: '#1e293b' },
+  { border: '#ec4899', bg: '#1e293b' },
+  { border: '#f59e0b', bg: '#1e293b' },
+  { border: '#10b981', bg: '#1e293b' },
+  { border: '#3b82f6', bg: '#1e293b' },
+  { border: '#ef4444', bg: '#1e293b' },
+  { border: '#06b6d4', bg: '#1e293b' },
 ];
 
 export default function EventCard({ event, onPress }) {

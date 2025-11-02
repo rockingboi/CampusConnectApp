@@ -74,7 +74,6 @@ export default function HomeScreen({ navigation }) {
     navigation.navigate('EventDetails', { event });
   };
 
-  // Separate component for list items to properly use hooks
   const EventListItem = ({ item, index, onPress }) => {
     const itemOpacity = useSharedValue(0);
     const itemTranslateY = useSharedValue(20);
